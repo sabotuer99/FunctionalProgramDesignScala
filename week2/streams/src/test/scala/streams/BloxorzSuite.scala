@@ -67,6 +67,7 @@ class BloxorzSuite extends FunSuite {
 
 	test("optimal solution for level 1") {
     new Level1 {
+      solution.length
       assert(solve(solution) == Block(goal, goal))
     }
   }
@@ -75,6 +76,20 @@ class BloxorzSuite extends FunSuite {
 	test("optimal solution length for level 1") {
     new Level1 {
       assert(solution.length == optsolution.length)
+    }
+  }
+
+  test("neighbors returns expected") {
+    new Level1 {
+      val neighbors = this.neighborsWithHistory(startBlock, List())
+      assert(neighbors.length == 2)
+    }
+  }
+
+  test("from returns expected") {
+    new Level1 {
+      val paths = this.pathsFromStart
+      assert(paths.length > 1)
     }
   }
 
